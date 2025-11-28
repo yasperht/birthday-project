@@ -1,4 +1,3 @@
-
 * {
     margin: 0;
     padding: 0;
@@ -7,8 +6,8 @@
 
 body {
     font-family: 'Montserrat', sans-serif;
-    background: linear-gradient(135deg, #ffebee 0%, #fce4ec 50%, #f8bbd0 100%);
-    color: #d81b60;
+    background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 50%, #90CAF9 100%);
+    color: #1565C0;
     overflow-x: hidden;
     min-height: 100vh;
     display: flex;
@@ -29,7 +28,7 @@ body {
     width: 90%;
     background-color: rgba(255, 255, 255, 0.95);
     border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(216, 27, 96, 0.3);
+    box-shadow: 0 10px 30px rgba(66, 165, 245, 0.3);
     padding: 30px;
     position: relative;
     z-index: 1;
@@ -47,16 +46,17 @@ h1, h2 {
 
 h1 {
     font-size: 3.5rem;
-    color: #d81b60;
-    background: linear-gradient(to right, #d81b60, #ff4081);
+    color: #1976D2;
+    background: linear-gradient(to right, #1976D2, #42A5F5);
     background-clip: text;
+    -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 30px;
 }
 
 h2 {
     font-size: 2.5rem;
-    color: #f06292;
+    color: #42A5F5;
     margin-bottom: 25px;
 }
 
@@ -87,7 +87,7 @@ p {
 }
 
 .btn {
-    background: linear-gradient(45deg, #d81b60, #ff4081);
+    background: linear-gradient(45deg, #42A5F5, #64B5F6);
     color: white;
     border: none;
     padding: 15px 30px;
@@ -96,7 +96,7 @@ p {
     cursor: pointer;
     margin-top: 25px;
     transition: all 0.3s;
-    box-shadow: 0 4px 15px rgba(216, 27, 96, 0.4);
+    box-shadow: 0 4px 15px rgba(66, 165, 245, 0.4);
     font-weight: 600;
     letter-spacing: 1px;
     position: relative;
@@ -106,7 +106,7 @@ p {
 
 .btn:hover {
     transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(216, 27, 96, 0.5);
+    box-shadow: 0 8px 25px rgba(66, 165, 245, 0.5);
 }
 
 .btn:active {
@@ -120,7 +120,7 @@ p {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(45deg, #ff4081, #d81b60);
+    background: linear-gradient(45deg, #64B5F6, #42A5F5);
     z-index: -1;
     opacity: 0;
     transition: opacity 0.3s;
@@ -130,56 +130,9 @@ p {
     opacity: 1;
 }
 
-.heart {
-    width: 120px;
-    height: 120px;
-    background-color: #ff4081;
-    transform: rotate(45deg);
-    margin: 40px auto;
-    position: relative;
-    animation: heartbeat 1.5s infinite;
-    cursor: pointer;
-    box-shadow: 0 0 40px rgba(255, 64, 129, 0.6);
-    transition: all 0.3s;
-}
-
-.heart:hover {
-    transform: rotate(45deg) scale(1.1);
-    box-shadow: 0 0 60px rgba(255, 64, 129, 0.8);
-}
-
-.heart:before, .heart:after {
-    content: '';
-    width: 120px;
-    height: 120px;
-    background-color: #ff4081;
-    border-radius: 50%;
-    position: absolute;
-    box-shadow: 0 0 40px rgba(255, 64, 129, 0.6);
-}
-
-.heart:before {
-    top: -60px;
-    left: 0;
-}
-
-.heart:after {
-    top: 0;
-    left: -60px;
-}
-
-@keyframes heartbeat {
-    0% { transform: rotate(45deg) scale(1); }
-    25% { transform: rotate(45deg) scale(1.1); }
-    30% { transform: rotate(45deg) scale(1); }
-    35% { transform: rotate(45deg) scale(1.2); }
-    50% { transform: rotate(45deg) scale(1); }
-    100% { transform: rotate(45deg) scale(1); }
-}
-
 .name-input {
     padding: 15px 25px;
-    border: 2px solid #f8bbd0;
+    border: 2px solid #BBDEFB;
     border-radius: 50px;
     font-size: 1.1rem;
     width: 80%;
@@ -193,8 +146,8 @@ p {
 }
 
 .name-input:focus {
-    border-color: #d81b60;
-    box-shadow: 0 0 15px rgba(216, 27, 96, 0.3);
+    border-color: #42A5F5;
+    box-shadow: 0 0 15px rgba(66, 165, 245, 0.3);
     transform: scale(1.02);
 }
 
@@ -202,17 +155,17 @@ p {
     width: 220px;
     height: 220px;
     border-radius: 50%;
-    border: 8px solid #f8bbd0;
+    border: 8px solid #BBDEFB;
     overflow: hidden;
     margin: 30px auto;
     position: relative;
-    box-shadow: 0 15px 35px rgba(216, 27, 96, 0.25);
+    box-shadow: 0 15px 35px rgba(66, 165, 245, 0.25);
     transition: all 0.5s;
 }
 
 .photo-frame:hover {
     transform: scale(1.05) rotate(5deg);
-    box-shadow: 0 20px 40px rgba(216, 27, 96, 0.35);
+    box-shadow: 0 20px 40px rgba(66, 165, 245, 0.35);
 }
 
 .photo-frame img {
@@ -239,7 +192,7 @@ p {
 .floating-heart {
     position: absolute;
     font-size: 24px;
-    color: #ff4081;
+    color: #64B5F6;
     animation: float-up 4s linear forwards;
     opacity: 0;
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
@@ -256,19 +209,10 @@ p {
     }
 }
 
-.confetti {
-    position: absolute;
-    width: 12px;
-    height: 12px;
-    background-color: #f44336;
-    opacity: 0;
-    z-index: 20;
-}
-
 .progress-bar {
     width: 100%;
     height: 10px;
-    background-color: #f8bbd0;
+    background-color: #E3F2FD;
     border-radius: 5px;
     margin: 25px 0;
     overflow: hidden;
@@ -277,19 +221,19 @@ p {
 
 .progress {
     height: 100%;
-    background: linear-gradient(to right, #f06292, #d81b60);
+    background: linear-gradient(to right, #42A5F5, #1976D2);
     width: 0%;
     transition: width 0.8s cubic-bezier(0.65, 0, 0.35, 1);
     border-radius: 5px;
 }
 
 .message-box {
-    background-color: #fce4ec;
+    background-color: #E3F2FD;
     border-radius: 20px;
     padding: 25px;
     margin: 25px 0;
     text-align: center;
-    box-shadow: 0 8px 20px rgba(216, 27, 96, 0.15);
+    box-shadow: 0 8px 20px rgba(66, 165, 245, 0.15);
     transform: scale(0.9);
     opacity: 0;
     transition: all 0.8s;
@@ -303,10 +247,9 @@ p {
 }
 
 .typing-effect {
-    border-right: 2px solid #d81b60;
+    border-right: 2px solid #1976D2;
     animation: blink 0.75s step-end infinite;
     overflow: hidden;
-   
     display: flex;
     align-items: center;
     justify-content: center;
@@ -315,7 +258,7 @@ p {
 
 @keyframes blink {
     from, to { border-color: transparent }
-    50% { border-color: #d81b60 }
+    50% { border-color: #1976D2 }
 }
 
 .social-share {
@@ -329,7 +272,7 @@ p {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background: linear-gradient(45deg, #f8bbd0, #f06292);
+    background: linear-gradient(45deg, #90CAF9, #64B5F6);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -337,15 +280,13 @@ p {
     font-size: 24px;
     cursor: pointer;
     transition: all 0.3s;
-    box-shadow: 0 4px 10px rgba(216, 27, 96, 0.3);
+    box-shadow: 0 4px 10px rgba(66, 165, 245, 0.3);
 }
 
 .social-icon:hover {
     transform: translateY(-5px) scale(1.1);
-    box-shadow: 0 8px 20px rgba(216, 27, 96, 0.4);
+    box-shadow: 0 8px 20px rgba(66, 165, 245, 0.4);
 }
-
-
 
 .polaroid {
     background: white;
@@ -363,8 +304,9 @@ p {
 }
 
 .polaroid img {
-    width: 140px;
+    width: 100%;
     height: 150px;
+    object-fit: cover;
     border: 1px solid #eee;
 }
 
@@ -372,7 +314,7 @@ p {
     text-align: center;
     font-family: 'Dancing Script', cursive;
     font-size: 1.5rem;
-    color: #d81b60;
+    color: #1976D2;
     margin-top: 10px;
 }
 
@@ -383,17 +325,6 @@ p {
     gap: 30px;
     margin: 30px 0;
 }
-
-.countdown {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #d81b60;
-    text-align: center;
-    margin: 20px 0;
-    font-family: 'Dancing Script', cursive;
-}
-
-
 
 .petals {
     position: absolute;
@@ -417,13 +348,11 @@ p {
 .signature {
     font-family: 'Dancing Script', cursive;
     font-size: 2rem;
-    color: #d81b60;
+    color: #1976D2;
     margin-top: 30px;
     text-align: right;
     padding-right: 50px;
 }
-
-
 
 .firework {
     position: absolute;
@@ -468,6 +397,194 @@ p {
     }
 }
 
+/* GIF Container - Personalizado para el anime */
+.gif-container {
+    width: 400px;
+    height: 150px;
+    margin: 40px auto;
+    cursor: pointer;
+    transition: all 0.3s;
+    filter: drop-shadow(0 0 20px rgba(66, 165, 245, 0.5));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gif-container:hover {
+    transform: scale(1.08);
+    filter: drop-shadow(0 0 30px rgba(66, 165, 245, 0.7));
+}
+
+.anime-gif {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    animation: gentle-float 3s infinite ease-in-out;
+}
+
+/* Botón de sorpresa final */
+.surprise-btn {
+    display: inline-block;
+    text-decoration: none;
+    background: linear-gradient(45deg, #FF6B9D, #C2185B, #42A5F5, #FFD700);
+    background-size: 300% 300%;
+    animation: gradient-shift 4s ease infinite;
+    box-shadow: 0 4px 20px rgba(255, 107, 157, 0.6);
+    transition: all 0.3s;
+}
+
+.surprise-btn:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 8px 30px rgba(255, 107, 157, 0.8);
+    animation: gradient-shift 1.5s ease infinite, btn-pulse 0.8s ease infinite;
+}
+
+
+/* Pantalla de bienvenida */
+.welcome-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #E3F2FD 0%, #90CAF9 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    animation: fadeIn 0.5s ease-in;
+}
+
+.welcome-screen.hidden {
+    animation: fadeOut 0.8s ease-out forwards;
+    pointer-events: none;
+}
+
+.welcome-content {
+    text-align: center;
+    animation: slideUp 1s ease-out;
+}
+
+.welcome-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 4rem;
+    color: #1976D2;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+.welcome-text {
+    font-size: 1.5rem;
+    color: #555;
+    margin-bottom: 40px;
+}
+
+.welcome-btn {
+    background: linear-gradient(45deg, #42A5F5, #64B5F6);
+    font-size: 1.3rem;
+    padding: 20px 40px;
+    animation: pulse 2s infinite;
+}
+
+/* Control de música flotante */
+.music-control {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.music-control.show {
+    opacity: 1;
+}
+
+.music-btn {
+    background: linear-gradient(45deg, #42A5F5, #64B5F6);
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(66, 165, 245, 0.4);
+    transition: all 0.3s;
+}
+
+.music-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(66, 165, 245, 0.6);
+}
+
+.music-btn.muted {
+    background: linear-gradient(45deg, #9E9E9E, #757575);
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+@keyframes slideUp {
+    from { 
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to { 
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .welcome-title {
+        font-size: 2.5rem;
+    }
+    .welcome-text {
+        font-size: 1.2rem;
+    }
+    .music-control {
+        top: 15px;
+        right: 15px;
+    }
+}
+
+
+@keyframes gradient-shift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes btn-pulse {
+    0%, 100% { transform: translateY(-5px) scale(1.05); }
+    50% { transform: translateY(-5px) scale(1.1); }
+}
+
+
+@keyframes gentle-float {
+    0%, 100% { 
+        transform: translateY(0px);
+    }
+    50% { 
+        transform: translateY(-10px);
+    }
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
     h1 {
@@ -483,7 +600,10 @@ p {
         width: 180px;
         height: 180px;
     }
-  
+    .gif-container {
+        width: 300px;
+        height: 300px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -504,5 +624,8 @@ p {
         width: 150px;
         height: 150px;
     }
-    
+    .gif-container {
+        width: 250px;
+        height: 250px;
+    }
 }

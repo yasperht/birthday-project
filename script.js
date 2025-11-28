@@ -1,11 +1,65 @@
+// Variables de música
+let backgroundMusic = null;
+let isMusicPlaying = false;
+
+// Función para iniciar la experiencia
+function startExperience() {
+    const welcomeScreen = document.getElementById('welcome-screen');
+    const musicControl = document.getElementById('music-control');
+    backgroundMusic = document.getElementById('background-music');
+    
+    // Reproducir música
+    backgroundMusic.play().then(() => {
+        isMusicPlaying = true;
+        console.log('Música iniciada');
+    }).catch(error => {
+        console.log('Error al reproducir música:', error);
+    });
+    
+    // Ocultar pantalla de bienvenida
+    welcomeScreen.classList.add('hidden');
+    
+    // Mostrar control de música después de 1 segundo
+    setTimeout(() => {
+        musicControl.classList.add('show');
+    }, 1000);
+    
+    // Remover pantalla después de la animación
+    setTimeout(() => {
+        welcomeScreen.style.display = 'none';
+    }, 800);
+}
+
+// Función para controlar la música
+function toggleMusic() {
+    const musicIcon = document.getElementById('music-icon');
+    const musicBtn = document.querySelector('.music-btn');
+    
+    if (!backgroundMusic) {
+        backgroundMusic = document.getElementById('background-music');
+    }
+    
+    if (isMusicPlaying) {
+        backgroundMusic.pause();
+        musicIcon.classList.remove('fa-volume-up');
+        musicIcon.classList.add('fa-volume-mute');
+        musicBtn.classList.add('muted');
+        isMusicPlaying = false;
+    } else {
+        backgroundMusic.play();
+        musicIcon.classList.remove('fa-volume-mute');
+        musicIcon.classList.add('fa-volume-up');
+        musicBtn.classList.remove('muted');
+        isMusicPlaying = true;
+    }
+}
 
 // Initialize variables
 let currentStep = 1;
 const totalSteps = 6;
-let userName = "My Love";
+let userName = "Nani";
 
-
-// Initialize particles.js
+// Initialize particles.js con colores azules
 particlesJS("particles-js", {
     "particles": {
         "number": {
@@ -16,7 +70,7 @@ particlesJS("particles-js", {
             }
         },
         "color": {
-            "value": "#f06292"
+            "value": "#4A90E2"
         },
         "shape": {
             "type": "circle",
@@ -48,7 +102,7 @@ particlesJS("particles-js", {
         "line_linked": {
             "enable": true,
             "distance": 150,
-            "color": "#f8bbd0",
+            "color": "#B3E5FC",
             "opacity": 0.4,
             "width": 1.5
         },
@@ -100,16 +154,13 @@ document.addEventListener('DOMContentLoaded', function() {
     showStep(currentStep);
     createPetals();
     
-    // Animate the heart message
+    // Animate the message box when clicking GIF
     const heartMessage = document.getElementById('heartMessage');
-    document.getElementById('interactiveHeart').addEventListener('click', function() {
+    document.getElementById('interactiveGif').addEventListener('click', function() {
         setTimeout(() => {
             heartMessage.classList.add('show');
         }, 500);
     });
-    
-    // Set countdown (example: next 24 hours)
-    setCountdown();
 });
 
 // Function to show current step
@@ -134,8 +185,8 @@ function showStep(step) {
     // Special animations for each step
     switch(step) {
         case 1:
-            // Animate envelope
-            gsap.from("#envelope", {
+            // Animate image
+            gsap.from("img", {
                 y: 100,
                 opacity: 0,
                 duration: 1,
@@ -152,14 +203,13 @@ function showStep(step) {
             });
             break;
         case 3:
-            // Animate heart
-            gsap.from("#interactiveHeart", {
+            // Animate GIF container
+            gsap.from(".gif-container", {
                 scale: 0.5,
                 rotation: 180,
                 duration: 1,
                 ease: "elastic.out(1, 0.5)"
             });
-            document.getElementById('heartName').textContent = userName;
             break;
         case 4:
             // Type out message
@@ -186,12 +236,6 @@ function showStep(step) {
         case 6:
             // Create fireworks
             createFireworks();
-            // Animate final heart
-            gsap.from(".heart", {
-                scale: 0,
-                duration: 1.5,
-                ease: "elastic.out(1, 0.5)"
-            });
             break;
     }
 }
@@ -201,11 +245,6 @@ function nextStep() {
     if (currentStep < totalSteps) {
         currentStep++;
         showStep(currentStep);
-        
-        // Open envelope if on step 1
-        if (currentStep === 2) {
-            document.getElementById('envelope').classList.add('open');
-        }
     }
 }
 
@@ -216,13 +255,12 @@ function saveName() {
         userName = nameInput;
         document.getElementById('displayName').textContent = userName;
         document.getElementById('finalName').textContent = userName;
-        document.getElementById('heartName').textContent = userName;
         nextStep();
         
-        // Animate success
+        // Animate success (colores azules)
         gsap.to(".name-input", {
-            backgroundColor: "#e8f5e9",
-            borderColor: "#81c784",
+            backgroundColor: "#E1F5FE",
+            borderColor: "#4A90E2",
             duration: 0.5,
             yoyo: true,
             repeat: 1
@@ -236,19 +274,19 @@ function saveName() {
             yoyo: true,
             repeat: 1
         });
-        alert("Please enter your beautiful name to continue");
+        alert("Por favor ingresa tu nombre para continuar");
     }
 }
 
-// Function to create floating hearts
+// Function to create floating hearts (colores azules)
 function createHearts() {
     const container = document.getElementById('floatingHearts');
-    const colors = ['#ff4081', '#f06292', '#f8bbd0', '#d81b60', '#ff80ab'];
+    const colors = ['#4A90E2', '#42A5F5', '#64B5F6', '#1976D2', '#81D4FA'];
     
     for (let i = 0; i < 25; i++) {
         const heart = document.createElement('div');
         heart.classList.add('floating-heart');
-        heart.innerHTML = '❤';
+        heart.innerHTML = '💙';
         heart.style.left = `${Math.random() * 100}%`;
         heart.style.color = colors[Math.floor(Math.random() * colors.length)];
         heart.style.animationDuration = `${3 + Math.random() * 3}s`;
@@ -263,8 +301,8 @@ function createHearts() {
         }, 4000);
     }
     
-    // Animate heart click
-    gsap.to("#interactiveHeart", {
+    // Animate GIF click
+    gsap.to(".gif-container", {
         scale: 1.3,
         duration: 0.3,
         yoyo: true,
@@ -272,10 +310,10 @@ function createHearts() {
     });
 }
 
-// Function to create falling petals
+// Function to create falling petals (pétalos azules)
 function createPetals() {
     const container = document.getElementById('petalsContainer');
-    const petalColors = ['#ffcdd2', '#f8bbd0', '#fce4ec', '#f48fb1'];
+    const petalColors = ['#B3E5FC', '#81D4FA', '#E1F5FE', '#64B5F6'];
     
     for (let i = 0; i < 15; i++) {
         const petal = document.createElement('div');
@@ -325,38 +363,23 @@ function createPetals() {
             delay: delay,
             ease: "none",
             onComplete: () => {
-                // Reset petal to top
-                petal.style.top = `-20px`;
-                petal.style.left = `${Math.random() * 100}%`;
-                // Repeat animation
-                gsap.to(petal, {
-                    y: window.innerHeight + 50,
-                    x: `+=${sway}`,
-                    rotation: 360,
-                    duration: duration,
-                    ease: "none",
-                    onComplete: () => {
-                        petal.remove();
-                    }
-                });
+                petal.remove();
             }
         });
     }
 }
 
-// Function to type out message
+// Function to type out message - MENSAJES SIMPLES Y ELEGANTES
 function typeMessage() {
     const messages = [
-        `Dear ${userName},`,
-        "On your special day, I want you to know...",
-        "You are the most amazing person I've ever met.",
-        "Your smile brightens my darkest days.",
-        "Your laugh is my favorite sound in the world.",
-        "Your love gives me strength and happiness.",
-        "I'm so grateful to have you in my life.",
-        "May this year bring you all the joy you deserve.",
-        "You deserve the world and more.",
-        "Happy Birthday, my love! ❤"
+        `Hola ${userName},`,
+        "Hoy es tu día.",
+        "Espero que sea especial.",
+        "Gracias por ser tú.",
+        "Que este año te traiga felicidad.",
+        "Disfruta cada momento.",
+        "Te deseo lo mejor.",
+        "Feliz cumpleaños 🎂"
     ];
     
     const typingText = document.getElementById('typingText');
@@ -397,7 +420,7 @@ function typeMessage() {
     }, 500);
 }
 
-// Function to create fireworks
+// Function to create fireworks (colores azules)
 function createFireworks() {
     // Create initial fireworks
     for (let i = 0; i < 8; i++) {
@@ -415,7 +438,7 @@ function createFireworks() {
 }
 
 function createFirework() {
-    const colors = ['#ff4081', '#f06292', '#f8bbd0', '#d81b60', '#ff80ab', '#ffcdd2'];
+    const colors = ['#4A90E2', '#42A5F5', '#64B5F6', '#1976D2', '#81D4FA', '#B3E5FC'];
     
     // Create firework center
     const firework = document.createElement('div');
@@ -451,42 +474,10 @@ function createFirework() {
     }, 1000);
 }
 
-// Function to set countdown
-function setCountdown() {
-    // Set target date (next 24 hours from now)
-    const targetDate = new Date();
-    targetDate.setDate(targetDate.getDate() + 1);
-    
-    function updateCountdown() {
-        const now = new Date();
-        const diff = targetDate - now;
-        
-        if (diff <= 0) {
-            document.getElementById('countdown').innerHTML = "<span>Happy Birthday!</span>";
-            return;
-        }
-        
-        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-        
-        document.getElementById('days').textContent = days.toString().padStart(2, '0');
-        document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-        document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-        document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
-    }
-    
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
-}
-
-
-
 // Function to share on social media
 function shareOnSocial(platform) {
     let url = '';
-    const text = `Check out this beautiful birthday wish for ${userName}! ${window.location.href}`;
+    const text = `¡Mira este hermoso mensaje de cumpleaños para ${userName}! ${window.location.href}`;
     
     switch(platform) {
         case 'facebook':
